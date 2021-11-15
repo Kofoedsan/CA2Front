@@ -7,13 +7,13 @@ const Fetch = () => {
 
   useEffect(() => {
     getCovidInfo();
+    getUserRoles();
   }, []);
 
   const getCovidInfo = async () => {
-    const res = await fetch(URL + "/api/fetch/getcovid/" + username);
+    const res = await fetch(URL + "/api/fetch/getcovid/" + getUserRoles());
     const data = await res.json();
     setStatus(data, status);
-    console.log(username);
   };
 
   return (
@@ -32,7 +32,6 @@ const getUserRoles = () => {
     return username;
   } else return "";
 };
-const username = getUserRoles();
 
 export default function App() {
   return <Fetch />;
